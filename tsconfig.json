@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "lib": ["ESNext"],
+    "types": ["@cloudflare/workers-types/2023-07-01"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx",
+    // JSONファイルをimportできるようにする
+    "resolveJsonModule": true,
+    // exportしてるものだけ参照できる。また参照できても変更はできない
+    // export const foo = "foo"; ←これは参照できるが変更できない
+    // const bar = "bar"; ←これは参照できない
+    "moduleDetection": "force",
+    // declare const enum や 再export しているのに警告が出る
+    "isolatedModules": true,
+    // インデックスや配列のプロパティへのアクセスを厳密にチェックする
+    "noUncheckedIndexedAccess": true
+  }
+}
