@@ -22,7 +22,7 @@ class RedidRateLimiter {
 	private constructor() {}
 
 	static getInstance(c: Context<Env, "/todos/:id", BlankInput>) {
-		if (!this.instance) {
+		if (!RedidRateLimiter.instance) {
 			const redisClient = new Redis({
 				token: c.env.UPSTASH_REDIS_REST_TOKEN,
 				url: c.env.UPSTASH_REDIS_REST_URL,
@@ -34,11 +34,11 @@ class RedidRateLimiter {
 				ephemeralCache: cache, // グローバルキャッシュを使用時のみ有効
 			});
 
-			this.instance = ratelimit;
-			return this.instance;
+			RedidRateLimiter.instance = ratelimit;
+			return RedidRateLimiter.instance;
 		}
 
-		return this.instance;
+		return RedidRateLimiter.instance;
 	}
 }
 
